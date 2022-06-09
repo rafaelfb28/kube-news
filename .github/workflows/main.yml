@@ -52,6 +52,8 @@ jobs:
       - name: Deploy to Kubernetes cluster
         uses: Azure/k8s-deploy@v3.1
         with:
+          username: ${{secrets.DOCKERHUB_USER}}
+          password: ${{secrets.DOCKERHUB_PWD}}
           images: bobyxd/kube-news:${{github.run_number}}
           manifests: |
             k8s/deployment.yaml
